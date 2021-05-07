@@ -7,31 +7,34 @@ interface initial {
   hotelList: Array<object>,
   renderList: Array<object>,
   countOfHotel: number,
-  displayIndex: number
+  displayIndex: number,
+  showMap:Boolean
 }
 const initialState:initial = {
   hotelList: [],
   renderList: [],
   countOfHotel: 0,
-  displayIndex : 0
+  displayIndex: 0,
+  showMap:true
 }
 export default function reducer(state = initialState,action : action) {
   switch (action.type) {
     case 'INITIALIZE':
       return {
         ...state,
-        hotelList : action.payload
+        hotelList: [...state.hotelList,...action.payload],
+        countOfHotel: 12
       }
-    case 'ADD_TO_DISPLAY':
-      let maxIndex = state.countOfHotel - 1;
-      let newList:Array<object> = []
-      for (let i = state.displayIndex; i < Math.min(state.displayIndex + 3, maxIndex); i++){
-        newList.push(state.hotelList[i])
-      }
+    case 'TOGGLE':
       return {
         ...state,
-        renderList: [...state.renderList, ...newList],
-        displayIndex: state.displayIndex + 1
+        showMap : !state.showMap
+      }
+    case 'ADD_TO_DISPLAY':
+      return {
+        ...state,
+        renderList: [...state.renderList, ...action.payload],
+        displayIndex: state.displayIndex + 6
       }
     default :
     return state

@@ -23,7 +23,8 @@ export default function Navbar() {
 }
 
 const NavBarContainer = styled.div`
-margin:30px;
+margin-top:20px;
+margin-bottom:5px;
 display:flex;
 justify-content:space-evenly;
 `

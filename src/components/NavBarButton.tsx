@@ -1,11 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
+import {useDispatch} from 'react-redux'
 
 function NavBarButton() {
 
+  const dispatch = useDispatch();
   const handleClick = (event: React.MouseEvent<Element>) => {
     const element = event.currentTarget;
     element.classList.contains('toggle') ? element.classList.remove('toggle') : element.classList.add('toggle')
+    dispatch({ type: 'TOGGLE' });
   }
 
   return (
@@ -19,6 +22,7 @@ function NavBarButton() {
         <Button>Price</Button>
       </ButtonContainer>
       <ToggleContainer>
+      <p style={{marginLeft:'500px'}}>Show Map</p>
         <div className="toggle-btn" onClick={handleClick}>
           <div className="inner-circle"></div>
         </div>
