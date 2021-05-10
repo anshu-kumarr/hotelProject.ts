@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import {useDispatch} from 'react-redux'
 
 function NavBarButton() {
 
   const dispatch = useDispatch();
+ 
   const handleClick = (event: React.MouseEvent<Element>) => {
     const element = event.currentTarget;
     element.classList.contains('toggle') ? element.classList.remove('toggle') : element.classList.add('toggle')
@@ -22,7 +23,7 @@ function NavBarButton() {
         <Button>Price</Button>
       </ButtonContainer>
       <ToggleContainer>
-      <p style={{marginLeft:'500px'}}>Show Map</p>
+      <span style={{margin:'0 10px'}}>Show Map</span>
         <div className="toggle-btn" onClick={handleClick}>
           <div className="inner-circle"></div>
         </div>
@@ -38,12 +39,11 @@ display:flex;
 `
 const ButtonContainer = styled.div`
 display:flex;
-width:50%;
 `
 const ToggleContainer = styled.div`
 display:flex;
-width:50%;
 align-items:center;
+margin-left:auto;
 .toggle-btn{
   margin-left:auto;
   margin-right:50px;
@@ -69,10 +69,20 @@ align-items:center;
 }
 `
 const Button = styled.button`
-border:1px solid grey;
+border:1px solid rgba(0,0,0,0.3);
 border-radius:5px;
 background:white;
 padding:0.5rem 0.8rem;
 margin:10px;
 cursor: pointer;
+outline:none;
+color:rgba(0,0,0,0.6);
+:hover{
+  color:#08aadb;
+  box-shadow: 0 0 5px #08aadb;
+}
+:focus{
+  outline:none;
+}
+min-width:70px;
 `

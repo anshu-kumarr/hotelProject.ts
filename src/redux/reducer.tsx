@@ -1,43 +1,45 @@
-
-interface action{
-  type: String,
-  payload:any
+interface action {
+  type: String;
+  payload: any;
 }
 interface initial {
-  hotelList: Array<object>,
-  renderList: Array<object>,
-  countOfHotel: number,
-  displayIndex: number,
-  showMap:Boolean
+  hotelList: Array<object>;
+  renderList: Array<object>;
+  countOfHotel: number;
+  displayIndex: number;
+  showMap: Boolean;
 }
-const initialState:initial = {
+const initialState: initial = {
   hotelList: [],
   renderList: [],
   countOfHotel: 0,
   displayIndex: 0,
-  showMap:true
-}
-export default function reducer(state = initialState,action : action) {
+  showMap: true,
+};
+export default function reducer(state = initialState, action: action) {
   switch (action.type) {
-    case 'INITIALIZE':
+    case "INITIALIZE":
       return {
         ...state,
-        hotelList: [...state.hotelList,...action.payload],
-        countOfHotel: 12
-      }
-    case 'TOGGLE':
+        hotelList: [...state.hotelList, ...action.payload.data],
+        countOfHotel: action.payload.count,
+      };
+    case "TOGGLE":
       return {
         ...state,
-        showMap : !state.showMap
-      }
-    case 'ADD_TO_DISPLAY':
+        showMap: !state.showMap,
+      };
+    case "ADD_TO_DISPLAY":
       return {
         ...state,
-        renderList: [...state.renderList, ...action.payload],
-        displayIndex: state.displayIndex + 6
-      }
-    default :
-    return state
-      
+        renderList: [...action.payload],
+      };
+    case "START":
+      return {
+        ...state,
+        renderList: [...state.hotelList],
+      };
+    default:
+      return state;
   }
 }

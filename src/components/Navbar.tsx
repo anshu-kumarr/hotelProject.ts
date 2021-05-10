@@ -1,15 +1,25 @@
 import React from 'react'
+import {useSelector,useDispatch, RootStateOrAny} from 'react-redux'
 import FontAwesome from 'react-fontawesome'
 import styled from 'styled-components' 
+import search from '../search'
 
 export default function Navbar() {
+
+  const dispatch = useDispatch();
+  const state = useSelector((state: RootStateOrAny) => state.hotelList)
+
+  function handleChange(e: any) {
+    const filteredData = search(e.target.value, state);
+    dispatch({type:'ADD_TO_DISPLAY',payload:filteredData})
+  }
   return (
     <NavBarContainer>
       <NavBarIcon>
         <FontAwesome name="building" size="2x"/>
       </NavBarIcon>
       <NavBarInputBox>
-        <NavBarInput placeholder="Search"></NavBarInput>
+        <NavBarInput onChange={handleChange} placeholder="Search"></NavBarInput>
       <FontAwesome className="search" name="search" />
       </NavBarInputBox>
       <NavBarLink>
@@ -32,6 +42,11 @@ const NavBarInput = styled.input`
 width:100%;
 padding:10px;
 outline:none;
+border:1px solid rgba(0,0,0,0.3);
+:focus{
+  outline:none;
+  box-shadow: 0 0 5px #08aadb;
+}
 `
 const NavBarIcon = styled.div`
 display:flex;
