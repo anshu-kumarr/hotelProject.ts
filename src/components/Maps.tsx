@@ -18,7 +18,7 @@ const defaultCenter = {
   lat: -37.78845,
   lng: 144.96268,
 };
-function Maps(props: Props): ReactElement {
+function Maps(props: any): ReactElement {
   const state = useSelector((state: RootStateOrAny) => state.showMap);
   const [selected, setSelected] = useState<any>({});
   function handleSelect(item: any) {
@@ -49,6 +49,7 @@ function Maps(props: Props): ReactElement {
             <InfoWindow
               position={{ lat: +selected.lat, lng: +selected.lng }}
               onCloseClick={() => setSelected({})}
+              options={{ pixelOffset: new window.google.maps.Size(0, -40) }}
             >
               <InfoBoxContainer>
                 <InfoImage
@@ -95,6 +96,9 @@ export default Maps;
 
 const MapDisplay = styled.div<{ toggle: Boolean }>`
   width: ${(props) => (props.toggle ? "50%" : "0")};
+  @media (max-width: 576px) {
+    width: 0%;
+  }
 `;
 
 const InfoBoxContainer = styled.div`

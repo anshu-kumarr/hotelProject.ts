@@ -30,6 +30,7 @@ function InfoMap(props: any): ReactElement {
           mapContainerStyle={mapStyles}
           zoom={13}
           center={defaultCenter}
+          options={{ gestureHandling: "greedy" }}
         >
           {
             <Marker
@@ -49,6 +50,7 @@ function InfoMap(props: any): ReactElement {
             <InfoWindow
               position={defaultCenter}
               onCloseClick={() => setSelected({})}
+              options={{ pixelOffset: new window.google.maps.Size(0, -40) }}
             >
               <>
                 <h2>{selected.name}</h2>
@@ -66,4 +68,8 @@ export default InfoMap;
 
 const InfoMapContainer = styled.div`
   width: 75%;
+  height: 85vh;
+  @media (max-width: 576px) {
+    width: 0%;
+  }
 `;

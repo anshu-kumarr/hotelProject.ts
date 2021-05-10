@@ -43,5 +43,6 @@ function App() {
 
 const MainContainer = styled.div`
   display: flex;
+  min-width: 250px;
 `;
 export default App;

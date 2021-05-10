@@ -47,7 +47,7 @@ const HotelDetailContainer = styled.div`
   font-size: 0.9rem;
   display: flex;
   color: grey;
-  width: 90%;
+  width: 95%;
   p {
     margin: 5px 0;
     padding: 0 5px;

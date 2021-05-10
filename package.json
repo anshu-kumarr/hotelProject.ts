@@ -53,6 +53,7 @@
   },
   "devDependencies": {
     "@types/google-map-react": "^2.1.0",
+    "@types/googlemaps": "^3.43.3",
     "@types/react": "^17.0.4",
     "@types/react-fontawesome": "^1.6.4",
     "@types/react-router-dom": "^5.1.7",
