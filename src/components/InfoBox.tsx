@@ -14,7 +14,7 @@ const InfoBox = (props: Props) => {
   function handleClick(e: any) {
     setToggle((ps) => {
       if (ps.tar !== e.target) return { toggle: !ps.toggle, tar: e.target };
-      else return { toggle: ps.toggle, tar: ps.tar };
+      else return ps;
     });
   }
 
@@ -28,6 +28,7 @@ const InfoBox = (props: Props) => {
       <InfoTitle>{props.title}</InfoTitle>
       <Hr />
       <InfoTab>
+        <TabIndicator toggle={state.toggle}></TabIndicator>
         <InfoButton ref={start} onClick={handleClick} toggle={state.toggle}>
           Info
         </InfoButton>
@@ -71,30 +72,42 @@ const Hr = styled.hr`
 const InfoTab = styled.div`
   display: flex;
   margin-bottom: 10px;
+  position: relative;
 `;
 const InfoButton = styled.div<{ toggle: Boolean; ref: any }>`
   padding: 3px;
+  margin-bottom: 5px;
   align-items: center;
   text-align: center;
   width: 50%;
-  ${({ toggle }) =>
-    toggle
-      ? `border-bottom:#42adef 2px solid ;
- color:#42adef`
-      : ``}
+  ${({ toggle }) => (toggle ? `color:#42adef` : ``)}
 `;
 const ReviewButton = styled.div<{ toggle: Boolean }>`
   padding: 3px;
   align-items: center;
   text-align: center;
   width: 50%;
+  margin-bottom: 5px;
   ${({ toggle }) =>
-    toggle ? `` : `border-bottom:#42adef 2px solid;color:#42adef`}
+    toggle
+      ? ``
+      : `color:#42adef;
+  `}
 `;
 
 const ToggleContainer = styled.div<any>`
   position: relative;
-  overflow: scroll;
   height: 50vh;
-  ${({ toggle }) => (toggle ? `overflow:hidden` : `overflow:scroll`)}
+  /* ${({ toggle }) => (toggle ? `overflow:auto` : `overflow:scroll`)} */
+`;
+
+const TabIndicator = styled.div<any>`
+  position: absolute;
+  height: 5px;
+  width: 50%;
+  background: #42adef;
+  bottom: 0;
+  transition: 0.5s;
+  border-radius: 4px;
+  ${({ toggle }) => (toggle ? `left : 0` : `left:50%`)}
 `;

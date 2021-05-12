@@ -59,7 +59,8 @@ const HotelListDisplay = styled.div<{ toggle: Boolean }>`
 width:50%;
 transition: all 300ms ease-out;
 `
-      : `width:100%;transition: all 300ms ease-in-out;margin:0 auto;`}
+      : `width:100%;
+      transition: width 300ms ease-out;margin:0 auto;`}
   @media(max-width:576px) {
     width: 100%;
   }

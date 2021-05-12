@@ -61,6 +61,8 @@ function Reviews({ toggle }: Props): ReactElement {
 export default Reviews;
 
 const ReviewsContainer = styled.div<any>`
+  overflow: scroll;
+  height: 50vh;
   position: absolute;
   top: 0;
   width: 100%;

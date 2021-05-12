@@ -96,6 +96,7 @@ export default Maps;
 
 const MapDisplay = styled.div<{ toggle: Boolean }>`
   width: ${(props) => (props.toggle ? "50%" : "0")};
+  transition: all 300ms ease-out;
   @media (max-width: 576px) {
     width: 0%;
   }
