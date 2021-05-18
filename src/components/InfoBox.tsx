@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Information from "./Information";
 import Reviews from "./Reviews";
+import Carousel from "./Carousel";
 import styled from "styled-components";
 
 interface Props {
@@ -20,11 +21,9 @@ const InfoBox = (props: Props) => {
 
   return (
     <InfoBoxContainer>
-      <InfoImage
-        src={
-          "http://www.jjtravelonline.com/images/inner-services/hotel-inner.png"
-        }
-      />
+      <InfoImage>
+        <Carousel />
+      </InfoImage>
       <InfoTitle>{props.title}</InfoTitle>
       <Hr />
       <InfoTab>
@@ -55,7 +54,7 @@ const InfoBoxContainer = styled.div`
     width: 100%;
   }
 `;
-const InfoImage = styled.img`
+const InfoImage = styled.div`
   height: 200px;
   object-fit: cover;
   width: 100%;
@@ -75,6 +74,7 @@ const InfoTab = styled.div`
   position: relative;
 `;
 const InfoButton = styled.div<{ toggle: Boolean; ref: any }>`
+  cursor: pointer;
   padding: 3px;
   margin-bottom: 5px;
   align-items: center;
@@ -83,6 +83,7 @@ const InfoButton = styled.div<{ toggle: Boolean; ref: any }>`
   ${({ toggle }) => (toggle ? `color:#42adef` : ``)}
 `;
 const ReviewButton = styled.div<{ toggle: Boolean }>`
+  cursor: pointer;
   padding: 3px;
   align-items: center;
   text-align: center;
@@ -97,7 +98,7 @@ const ReviewButton = styled.div<{ toggle: Boolean }>`
 
 const ToggleContainer = styled.div<any>`
   position: relative;
-  height: 50vh;
+  height: 52vh;
   /* ${({ toggle }) => (toggle ? `overflow:auto` : `overflow:scroll`)} */
 `;
 

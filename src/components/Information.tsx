@@ -59,8 +59,17 @@ const InformationContainer = styled.div<any>`
   color: gray;
   ${({ toggle }) =>
     toggle
-      ? `transition: all 300ms ease-in`
-      : `margin-left:-400px; transition: all 300ms ease-out`}
+      ? `transition: all 300ms ease-in;
+    @media(max-width:1000px){
+            height:35vh;
+            overflow:scroll;
+          }
+          @media(width:1024px){
+            height:25vh;
+            overflow:scroll;
+          }
+      `
+      : `margin-left:-800px; transition: all 300ms ease-out`}
 `;
 const RoomInfo = styled.div`
   display: flex;

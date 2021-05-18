@@ -48,18 +48,19 @@ const ToggleContainer = styled.div`
   display: flex;
   align-items: center;
   margin-left: auto;
+  cursor: pointer;
   .toggle-btn {
     margin-left: auto;
     margin-right: 50px;
     background-color: #08aadb;
-    width: 60px;
-    height: 18px;
+    width: 40px;
+    height: 12px;
     border-radius: 20px;
-    padding: 5px;
+    padding: 3px;
   }
   .inner-circle {
-    width: 18px;
-    height: 18px;
+    width: 12px;
+    height: 12px;
     background: #fff;
     border-radius: 50%;
     transition: all 300ms ease-in-out;
@@ -68,7 +69,7 @@ const ToggleContainer = styled.div`
     background-color: grey;
   }
   .toggle-btn.toggle > .inner-circle {
-    margin-left: 40px;
+    margin-left: 28px;
     transition: all 300ms ease-in-out;
   }
   @media (max-width: 576px) {

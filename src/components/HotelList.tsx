@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import HotelDetail from "./HotelDetail";
+import SkeletonElement from "../skeleton/SkeletonElement";
 import axios from "axios";
 
 function HotelList() {
@@ -29,16 +30,23 @@ function HotelList() {
 
   return (
     <HotelListDisplay toggle={showMap}>
-      <CountDisplay>{count} places to stay</CountDisplay>
-      {list.map((item: any, idx: number) => {
-        let hotelName = item.first_name + " " + item.last_name;
-        return <HotelDetail title={hotelName} key={idx} />;
-      })}
-      {list.length === 6 ? (
-        <DisplayMore onClick={handleClick}>More</DisplayMore>
-      ) : (
-        ""
+      {list && (
+        <>
+          {list.length > 0 && (
+            <CountDisplay toggle={showMap}>{count} places to stay</CountDisplay>
+          )}
+          {list.map((item: any, idx: number) => {
+            let hotelName = item.first_name + " " + item.last_name;
+            return <HotelDetail title={hotelName} key={idx} />;
+          })}
+          {list.length === 6 ? (
+            <DisplayMore onClick={handleClick}>More</DisplayMore>
+          ) : (
+            ""
+          )}
+        </>
       )}
+      {list.length === 0 && <SkeletonElement />}
     </HotelListDisplay>
   );
 }
@@ -78,8 +86,8 @@ transition: all 300ms ease-out;
     width: 100%;
   }
 `;
-const CountDisplay = styled.div`
-  margin-left: 5%;
+const CountDisplay = styled.div<{ toggle: Boolean }>`
+  ${({ toggle }) => (toggle ? "" : `margin-left:18px;`)}
   color: gray;
   font-size: 2rem;
   font-weight: 600;

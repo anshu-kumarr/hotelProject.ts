@@ -68,8 +68,15 @@ const ReviewsContainer = styled.div<any>`
   width: 100%;
   ${({ toggle }) =>
     toggle
-      ? `margin-left:800px;transition: all 290ms ease-out ;`
-      : `transition: all 290ms ease-in `}
+      ? `margin-left:400%;transition: all 100ms ease-out ;`
+      : `transition: all 290ms ease-in;
+          @media(max-width:1000px){
+            height:35vh;
+          }
+          @media(width:1024px){
+            height:25vh;
+          }
+      `}
 `;
 const ReviewBox = styled.div`
   padding: 20px;

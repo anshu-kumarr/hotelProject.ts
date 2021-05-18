@@ -8,44 +8,54 @@ import {
 import { data } from "../MarkerData";
 import styled from "styled-components";
 import { RootStateOrAny, useSelector } from "react-redux";
+import { relative } from "path";
 interface Props {}
 const mapStyles = {
   height: "100%",
   width: "100%",
+  outline: "none",
 };
 
-const defaultCenter = {
-  lat: -37.78845,
-  lng: 144.96268,
-};
+// const defaultCenter = {
+//   lat: -35.78845,
+//   lng: 140.96268,
+// };
 function Maps(props: any): ReactElement {
   const state = useSelector((state: RootStateOrAny) => state.showMap);
   const [selected, setSelected] = useState<any>({});
+  const [center, setCenter] = useState({ lat: -30.27891, lng: 153.137909 });
   function handleSelect(item: any) {
+    setCenter({ lat: +item.lat, lng: +item.lng });
     setSelected(item);
   }
-  console.log(selected.name);
+
   return (
     <MapDisplay toggle={state}>
-      <LoadScript googleMapsApiKey=''>
+      <LoadScript googleMapsApiKey='AIzaSyAPvlFH6siXN9mhGa3of31-QJAOOZcI6To'>
         <GoogleMap
           mapContainerStyle={mapStyles}
-          zoom={4}
-          center={defaultCenter}
-          options={{ gestureHandling: "greedy" }}
+          zoom={5}
+          center={center}
+          options={{
+            gestureHandling: "greedy",
+            fullscreenControl: true,
+            streetViewControl: true,
+          }}
+          onClick={() => setSelected({})}
         >
           {data.hotels.map((item) => {
             return (
               <Marker
-                key={item.id}
-                title={item.name}
-                position={{ lat: +item.lat, lng: +item.lng }}
+                key={item.name}
+                // title={item.name}
+                position={{ lat: Number(item.lat), lng: Number(item.lng) }}
                 onClick={() => handleSelect(item)}
-                clickable={true}
+                // clickable={true}
               />
             );
           })}
-          {selected.lat && (
+
+          {selected && selected.lat && (
             <InfoWindow
               position={{ lat: +selected.lat, lng: +selected.lng }}
               onCloseClick={() => setSelected({})}
@@ -107,6 +117,7 @@ const InfoBoxContainer = styled.div`
   overflow: hidden;
   padding: 5px;
   border: 1px solid rgba(0, 0, 0, 0.2);
+  outline: none;
 `;
 const InfoImage = styled.img`
   height: 150px;

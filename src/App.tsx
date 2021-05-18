@@ -13,16 +13,20 @@ function App() {
   const state = useSelector((state: any) => state.hotelList);
   useEffect(() => {
     if (state.length <= 0) {
-      axios.get("https://reqres.in/api/users?page=1").then((response) => {
-        const response1 = response.data.data;
-        const data = [...response1];
-        console.log(response, data);
-        dispatch({
-          type: "INITIALIZE",
-          payload: { data: data, count: response.data.total },
-        });
-        dispatch({ type: "ADD_TO_DISPLAY", payload: data });
-      });
+      setTimeout(
+        () =>
+          axios.get("https://reqres.in/api/users?page=1").then((response) => {
+            const response1 = response.data.data;
+            const data = [...response1];
+            console.log(response, data);
+            dispatch({
+              type: "INITIALIZE",
+              payload: { data: data, count: response.data.total },
+            });
+            dispatch({ type: "ADD_TO_DISPLAY", payload: data });
+          }),
+        2000
+      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

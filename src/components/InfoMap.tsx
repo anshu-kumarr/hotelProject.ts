@@ -31,6 +31,7 @@ function InfoMap(props: any): ReactElement {
           zoom={13}
           center={defaultCenter}
           options={{ gestureHandling: "greedy" }}
+          onClick={() => setSelected({})}
         >
           {
             <Marker

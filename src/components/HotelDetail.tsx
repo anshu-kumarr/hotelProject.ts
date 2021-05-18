@@ -57,6 +57,7 @@ const HotelDetailContainer = styled.div`
   margin: 10px auto;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 `;
 const Availability = styled.p`
   font-weight: 400;
