@@ -48,14 +48,14 @@ function Maps(props: any): ReactElement {
               <Marker
                 key={item.name}
                 // title={item.name}
-                position={{ lat: Number(item.lat), lng: Number(item.lng) }}
+                position={{ lat: +item.lat, lng: +item.lng }}
                 onClick={() => handleSelect(item)}
                 // clickable={true}
               />
             );
           })}
 
-          {selected && selected.lat && (
+          {selected.lat && (
             <InfoWindow
               position={{ lat: +selected.lat, lng: +selected.lng }}
               onCloseClick={() => setSelected({})}
