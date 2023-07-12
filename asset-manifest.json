@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/hotelProject.ts/static/css/main.996ea365.chunk.css",
+    "main.js": "/hotelProject.ts/static/js/main.8a0a6590.chunk.js",
+    "main.js.map": "/hotelProject.ts/static/js/main.8a0a6590.chunk.js.map",
+    "runtime-main.js": "/hotelProject.ts/static/js/runtime-main.4421c0c0.js",
+    "runtime-main.js.map": "/hotelProject.ts/static/js/runtime-main.4421c0c0.js.map",
+    "static/js/2.cadec778.chunk.js": "/hotelProject.ts/static/js/2.cadec778.chunk.js",
+    "static/js/2.cadec778.chunk.js.map": "/hotelProject.ts/static/js/2.cadec778.chunk.js.map",
+    "index.html": "/hotelProject.ts/index.html",
+    "static/css/main.996ea365.chunk.css.map": "/hotelProject.ts/static/css/main.996ea365.chunk.css.map",
+    "static/js/2.cadec778.chunk.js.LICENSE.txt": "/hotelProject.ts/static/js/2.cadec778.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4421c0c0.js",
+    "static/js/2.cadec778.chunk.js",
+    "static/css/main.996ea365.chunk.css",
+    "static/js/main.8a0a6590.chunk.js"
+  ]
+}
