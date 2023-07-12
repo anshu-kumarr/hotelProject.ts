@@ -2,6 +2,7 @@
   "name": "hotel_project",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://anshu-kumarr.github.io/hotelProject.ts/",
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.8",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
@@ -31,7 +32,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -57,6 +60,7 @@
     "@types/react": "^17.0.4",
     "@types/react-fontawesome": "^1.6.4",
     "@types/react-router-dom": "^5.1.7",
-    "@types/styled-components": "^5.1.9"
+    "@types/styled-components": "^5.1.9",
+    "gh-pages": "^5.0.0"
   }
 }
